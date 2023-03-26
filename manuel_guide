@@ -147,3 +147,22 @@ uptickd tx staking create-validator \
   --fees 0auptick \
   --gas=auto
 ```
+
+```2. komut
+uptickd tx staking create-validator \
+--amount=6820000000000000000000auptick \
+--pubkey=$(uptickd tendermint show-validator) \
+--moniker="superjax" \
+--identity=62AD9059830AD374 \
+--details="www.wabut.club" \
+--chain-id=uptick_117-1 \
+--commission-rate=0.05 \
+--commission-max-rate=0.20 \
+--commission-max-change-rate=0.01 \
+--min-self-delegation=1 \
+--from=wallet \
+--gas-prices=0.1auptick \
+--gas-adjustment=1.5 \
+--gas=auto \
+-y 
+```
