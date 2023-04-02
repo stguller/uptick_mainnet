@@ -23,16 +23,16 @@ make install
 
 ## Config app
 ```
-uptickd config chain-id ## Config app
+uptickd config chain-id uptick_7000-2
 ```
-uptickd config chain-id $UPTICK_CHAIN_ID
+uptickd config chain-id uptick_7000-2
 uptickd config keyring-backend test
 uptickd config node tcp://localhost:${UPTICK_PORT}657
 ```
 
 ## Init app
 ```
-uptickd init $NODENAME --chain-id $UPTICK_CHAIN_ID
+uptickd init $NODENAME --chain-id uptick_7000-2
 ```
 
 ### Download configuration
