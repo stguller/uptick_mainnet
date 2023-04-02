@@ -1,0 +1,49 @@
+## Install dependencies
+```
+sudo apt install curl build-essential git wget jq make gcc tmux -y
+```
+
+## Install go
+cd $HOME || return
+wget "https://go.dev/dl/go1.20.2.linux-arm64.tar.gz"
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "https://go.dev/dl/go1.20.2.linux-arm64.tar.gz"
+echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> ~/.bash_profile
+source ~/.bash_profile
+```
+
+## Download and build binaries
+```
+cd $HOME
+git clone https://github.com/UptickNetwork/uptick.git
+cd uptick
+git checkout v0.2.4
+make install
+```
+
+## Config app
+```
+uptickd config chain-id ## Config app
+```
+uptickd config chain-id $UPTICK_CHAIN_ID
+uptickd config keyring-backend test
+uptickd config node tcp://localhost:${UPTICK_PORT}657
+```
+
+## Init app
+```
+uptickd init $NODENAME --chain-id $UPTICK_CHAIN_ID
+```
+
+### Download configuration
+```
+curl -o $HOME/.uptickd/config/genesis.json https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/uptick_7000-2/genesis.json
+```
+
+## Set seeds and peers
+```
+SEEDS='f97a75fb69d3a5fe893dca7c8d238ccc0bd66a8f@uptick-seed.p2p.brocha.in:30554'
+PEERS=''
+sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.uptickd/config/config.toml
+```
+
